@@ -1,7 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :update, :destroy]
 
-  # GET /tasks
   # GET /tasks.json
   def index
     @tasks = Task.all
@@ -9,17 +8,15 @@ class TasksController < ApplicationController
     render json: @tasks
   end
 
-  # GET /tasks/1
   # GET /tasks/1.json
   def show
     render json: @task
   end
 
-  # POST /tasks
   # POST /tasks.json
   def create
     debugger
-    @task = Task.new(params)
+    @task = Task.new(task_params)
 
     if @task.save
       render json: @task, status: :created, location: @task
@@ -28,7 +25,6 @@ class TasksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
     @task = Task.find(params[:id])
@@ -40,7 +36,6 @@ class TasksController < ApplicationController
     end
   end
 
-  # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
     @task.destroy
